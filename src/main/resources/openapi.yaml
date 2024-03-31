@@ -108,7 +108,7 @@ paths:
                 $ref: '#/components/schemas/Avengers'
         '400':
           description: Invalid input
-  /v1/api/avenger/{id}:
+  /v1/api/avenger/{id}/detail:
     get:
       tags:
         - avenger
