@@ -1,0 +1,166 @@
+openapi: 3.0.3
+info:
+  title: Avengers API
+  description: Avengers API
+  termsOfService: http://swagger.io/terms/
+  contact:
+    email: fedispato@gmail.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.11
+externalDocs:
+  description: Find out more about Swagger
+  url: http://swagger.io
+servers:
+  - url: https://tortora.io/avengers
+tags:
+  - name: avenger
+    description: Everything about your Avengers
+    externalDocs:
+      description: Find out more
+      url: http://swagger.io
+paths:
+  /v1/api/avenger:
+    get:
+      tags:
+        - avenger
+      summary: Return all Avengers
+      description: Return all avengers
+      operationId: avengers
+      responses:
+        '200':
+          description: GET Avengers
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Avengers'          
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Avengers'
+        '400':
+          description: Invalid status value
+    put:
+      tags:
+        - avenger
+      summary: Update an existing avenger
+      description: Update an existing avenger by Id
+      operationId: updateAvenger
+      requestBody:
+        description: Update an existent avenger
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Avengers'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Avengers'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Avengers'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Avengers'          
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Avengers'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Avenger not found
+    post:
+      tags:
+        - avenger
+      summary: Add a new avenger 
+      description: Add a new avenger
+      operationId: addAvenger
+      requestBody:
+        description: Create a new avenger
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Avengers'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Avengers'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Avengers'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Avengers'          
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Avengers'
+        '400':
+          description: Invalid input
+  /v1/api/avenger/{id}:
+    get:
+      tags:
+        - avenger
+      summary: Find avenger by ID
+      description: Returns a single avenger
+      operationId: getAvengerById
+      parameters:
+        - name: id
+          in: path
+          description: ID of avenger to return
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Avengers'          
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Avengers'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Avenger not found
+components:
+  schemas:
+    Avengers:
+      type: object
+      properties:
+        nick: 
+          type: string
+          example: tortora
+        person: 
+          type: string
+          example: Filipe Tortora
+        description:
+          type: string
+          example: Sobre poderes
+        history: 
+          type: string
+          example: Historia
+  requestBodies:
+    Avengers:
+      description: Avenger object that needs to be added
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Avengers'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/Avengers'
