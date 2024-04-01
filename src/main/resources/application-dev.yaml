@@ -1,14 +1,12 @@
 spring:
-  profiles:
-    active: dev
   jackson:
     serialization:
       indent-output: true
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:postgresql://localhost:25433/${DB_NAME}
-    username: ${DB_USERNAME}
-    password: ${DB_PASSWORD}
+    url: jdbc:postgresql://localhost:25433/avengers
+    username: tortora.avenger
+    password: tortora.avenger
   jpa:
-    database-platform: org.hibernate.dialect.PostgresSQLDialect
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
     show-sql: true

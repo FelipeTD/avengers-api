@@ -3,9 +3,9 @@ services:
   postgres-avenger:
     image: postgres
     environment:
-      POSTGRES_USER: ${DB_USER}
-      POSTGRES_DB: ${DB_NAME}
-      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_USER: tortora.avenger
+      POSTGRES_DB: avengers
+      POSTGRES_PASSWORD: tortora.avenger
       ALLOW_IP_RANGE: 0.0.0.0/0
     ports:
       - "25433:5432"
@@ -17,8 +17,8 @@ services:
   pgadmin-avenger:
     image: dpage/pgadmin4
     environment:
-      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
-      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
+      PGADMIN_DEFAULT_EMAIL: avengers@email.com
+      PGADMIN_DEFAULT_PASSWORD: 123456
     ports:
       - "5556:80"
     depends_on:
